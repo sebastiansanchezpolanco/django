@@ -4,7 +4,7 @@ from django.http import HttpResponse
 # Create your views here.
 #Creamos un metodo para dibujar las vistas
 def index(request):
-    return HttpResponse("Mi primera pagina django")
+    return render(request, "paginas/index.html")
 
 def prueba(request):
-    return HttpResponse("probando probando...")
+    return render(request, "paginas/prueba.html")
