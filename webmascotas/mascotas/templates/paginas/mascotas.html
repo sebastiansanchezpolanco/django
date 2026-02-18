@@ -7,7 +7,13 @@
     <style>
         body { font-family: sans-serif; margin: 40px; background-color: #f8f9fa; }
         h1 { text-align: center; color: #2c3e50; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; }
+        table { width: 50%;           /* Ocupa la mitad de la pantalla */
+        margin-left: auto;    /* Margen automático a la izquierda */
+        margin-right: auto;   /* Margen automático a la derecha (esto la centra) */
+        
+        border-collapse: collapse;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);}
         th, td { border: 1px solid #dee2e6; padding: 12px; text-align: left; }
         th { background-color: #007bff; color: white; }
         tr:nth-child(even) { background-color: #f2f2f2; }
