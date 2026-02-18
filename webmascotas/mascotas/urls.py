@@ -4,6 +4,7 @@ from django.urls import path
 from mascotas import views
 #Creamos las rutas 
 urlpatterns=[ 
-        path('', views.mascotas, name="mascotas"),
-
+        path('index', views.index, name="index"),
+        path('mascotas', views.mascotas, name="mascotas"),
+        path('colores', views.colores, name="colores")
         ]

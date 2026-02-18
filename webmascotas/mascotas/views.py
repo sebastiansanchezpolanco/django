@@ -3,6 +3,9 @@ from django.http import HttpResponse
 
 # Create your views here.
 #Creamos un metodo para dibujar las vistas
+def index(request):
+    return render(request, "paginas/index.html")
+
 def mascotas(request):
     mascotas = [
     {"nombre": "Max", "raza": "Golden Retriever", "edad": 3},
@@ -60,3 +63,13 @@ def mascotas(request):
         "listamascotas":mascotas
     }
     return render(request, "paginas/mascotas.html", informacion)
+
+def colores(request):
+    if ('micolor' in request.GET):
+        colorRecibido=request.GET["micolor"]
+    else:
+        colorRecibido="NADA DE NADA!"
+    informacion={
+        "color":colorRecibido,
+    }
+    return render(request, "paginas/colores.html", informacion)
