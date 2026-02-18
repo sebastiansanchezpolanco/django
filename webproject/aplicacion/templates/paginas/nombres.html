@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla de Jugadores</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Lista de Jugadores</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Posición</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for jugador in plantilla %}
+            <tr>
+                <td>{{ jugador.nombre }}</td>
+                <td>{{ jugador.posicion }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <hr>
+    {% for name in listajugadores %}
+        <h2>{{ name }}</h2>
+    {% endfor %}
+
+</body>
+</html>
