@@ -5,6 +5,7 @@ from aplicacion import views
 #Creamos las rutas 
 urlpatterns=[ 
         path('', views.index, name="index"),
-        path('prueba/', views.prueba, name="prueba")
-]
+        path('prueba/', views.prueba, name="prueba"),
+        path('imagenes/', views.imag, name="imag")
+        ]
 
