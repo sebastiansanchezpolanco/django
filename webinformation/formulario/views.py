@@ -32,13 +32,33 @@ def parimpar(request):
         verificador=int(num1)%2
         if (verificador==0):
             informacion={
-            "verific":"par"
+            "verific":"par",
+            "numero":num1
         }
         else:
             (verificador!=0)
             informacion={
-            "verific":"impar"
+            "verific":"impar",
+            "numero":num1
         }
         return render(request, "paginas/parimpar.html", informacion)
     else:
         return render(request, "paginas/parimpar.html")
+def collatz(request):
+    if ('cajanumero' in request.POST):
+        listanumeros=[]
+        numero=int(request.POST['cajanumero'])
+        while numero != 1:
+            if numero % 2 == 0:
+                numero=numero/2
+            else:
+                numero=3*numero+1
+            listanumeros.append(int(numero)) 
+        informacion={
+            "listanumeros":listanumeros
+        }
+        return render(request, "paginas/collatz.html", informacion)
+    else:
+        return render(request, "paginas/collatz.html")
+    
+    

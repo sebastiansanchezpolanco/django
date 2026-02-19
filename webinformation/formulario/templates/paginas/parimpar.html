@@ -13,8 +13,10 @@
         Introduzca su número: <input type="number" name="cajanum1"/><br>
         <button>Verificar</button>
     </form>
+    {%if verific%}
     <h2>
-        El numero es .... {{verific}}
+        El numero es {{numero}} .... {{verific}}
     </h2>
+    {%endif%}
 </body>
 </html>
