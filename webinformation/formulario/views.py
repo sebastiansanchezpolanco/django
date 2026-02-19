@@ -26,3 +26,19 @@ def suma(request):
         return render(request, "paginas/suma.html", informacion)
     else:
         return render(request, "paginas/suma.html")
+def parimpar(request):
+    if('cajanum1' in request.POST):
+        num1=request.POST["cajanum1"]
+        verificador=int(num1)%2
+        if (verificador==0):
+            informacion={
+            "verific":"par"
+        }
+        else:
+            (verificador!=0)
+            informacion={
+            "verific":"impar"
+        }
+        return render(request, "paginas/parimpar.html", informacion)
+    else:
+        return render(request, "paginas/parimpar.html")
