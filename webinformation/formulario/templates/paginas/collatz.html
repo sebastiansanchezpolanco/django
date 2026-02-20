@@ -1,24 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conjetura de Collatz</title>
+    <style>
+        :root {
+            --primary-color: #ff7675; /* Un tono rojizo/coral para Collatz */
+            --secondary-color: #2d3436;
+            --bg-color: #dfe6e9;
+        }
+
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 { color: var(--secondary-color); margin-top: 0; }
+
+        .btn-back {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            width: 80px;
+            margin: 10px;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        button:hover { background-color: #d63031; }
+
+        /* Estilo de la Secuencia */
+        .sequence-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .number-node {
+            background: var(--secondary-color);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            position: relative;
+            min-width: 30px;
+            animation: popIn 0.3s ease forwards;
+        }
+
+        /* Flecha decorativa entre números */
+        .number-node:not(:last-child)::after {
+            content: "→";
+            position: absolute;
+            right: -15px;
+            color: #b2bec3;
+            font-weight: normal;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .info {
+            font-size: 0.9rem;
+            color: #636e72;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Conjetura de Collatz</h1>
-    <a href="/">Volver a index</a><br>
-    <form method="post">
-        {%csrf_token%}
-        Introduzca número:
-        <input type="number" name="cajanumero"/><br>
-        <button>Mostar conjetura de Collatz</button>
-    </from>
-    <ul>
-        {% for num in listanumeros %}
-            <li> {{num}}</li>
-        {% endfor %}
-    </ul>
+
+    <div class="container">
+        <a href="/" class="btn-back">← Volver al Panel</a>
+        <h1>Conjetura de Collatz</h1>
+        
+        <form method="post">
+            {% csrf_token %}
+            <label>Introduce un número inicial:</label><br>
+            <input type="number" name="cajanumero" required min="1">
+            <button type="submit">Calcular Secuencia</button>
+        </form>
+
+        {% if listanumeros %}
+        <h3>Secuencia generada:</h3>
+        <ul class="sequence-container">
+            {% for num in listanumeros %}
+                <li class="number-node">{{ num }}</li>
+            {% endfor %}
+        </ul>
+        <p class="info">La secuencia llegó a 1 en {{ listanumeros|length }} pasos.</p>
+        {% endif %}
+    </div>
 
 </body>
 </html>

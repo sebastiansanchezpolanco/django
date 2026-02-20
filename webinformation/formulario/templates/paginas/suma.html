@@ -1,21 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sumar Números</title>
+    <style>
+        :root {
+            --primary-color: #27ae60; /* Verde para diferenciarlo de la tabla */
+            --secondary-color: #2c3e50;
+            --bg-color: #f0f2f5;
+        }
+
+        body { 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            margin: 0; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--bg-color);
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 { color: var(--secondary-color); margin-top: 0; }
+
+        .btn-back {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #7f8c8d;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .btn-back:hover { color: var(--secondary-color); }
+
+        /* Estilo del Formulario */
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: 600;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            box-sizing: border-box; /* Evita que el input se salga del contenedor */
+            transition: border-color 0.3s;
+        }
+
+        input[type="number"]:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #219150;
+            transform: translateY(-1px);
+        }
+
+        /* Resultado */
+        .result-box {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .result-box h2 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+        }
+
+        .suma-valor {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Samar numeros!!</h1>
-    <a href="/">Volver a index</a>
-    <form method="post">
-        {% csrf_token %}
-        Introduzca su número 1: <input type="number" name="cajanum1"/><br>
-        Introduzca su número 2: <input type="number" name="cajanum2"/><br>
-        <button>Sumar numeros</button>
-    </form>
-    <h2>
-        La suma es .... {{suma}}
-    </h2>
+
+    <div class="container">
+        <a href="/" class="btn-back">← Volver al inicio</a>
+        <h1>¡Sumar Números!</h1>
+        
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Número 1:</label>
+                <input type="number" name="cajanum1" placeholder="0" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Número 2:</label>
+                <input type="number" name="cajanum2" placeholder="0" required>
+            </div>
+            
+            <button type="submit">Calcular Suma</button>
+        </form>
+
+        {% if suma is not None %}
+        <div class="result-box">
+            <h2>El resultado es:</h2>
+            <span class="suma-valor">{{ suma }}</span>
+        </div>
+        {% endif %}
+    </div>
+
 </body>
 </html>

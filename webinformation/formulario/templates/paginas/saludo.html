@@ -1,21 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saludo Personalizado</title>
+    <style>
+        :root {
+            --primary-color: #6c5ce7; /* Morado elegante */
+            --accent-color: #a29bfe;
+            --text-dark: #2d3436;
+        }
+
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            margin: 0; 
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .back-link {
+            display: block;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        h1 { 
+            color: var(--text-dark); 
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #636e72;
+            font-size: 0.95rem;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #dfe6e9;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 8px rgba(108, 92, 231, 0.2);
+        }
+
+        button {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #5b4bc4;
+        }
+
+        /* Animación para el saludo */
+        .welcome-msg {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px lazy #eee;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .welcome-msg h2 {
+            font-size: 1.1rem;
+            color: #636e72;
+            font-weight: 400;
+        }
+
+        .name-highlight {
+            display: block;
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
-    <h1>Saludo!!</h1>
-    <a href="/">Volver a index</a>
-    <form method="post">
-        {% csrf_token %}
-        Introduzca su Nombre
-        <input type="text" name="cajanombre"/><br>
-        <button>Enviar</button>
-    </form>
-    <h2>
-        Su nombre es .... {{nombre}}
-    </h2>
+
+    <div class="card">
+        <a href="/" class="back-link">← Volver al inicio</a>
+        <h1>¡Hola! 👋</h1>
+        
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="cajanombre">¿Cómo te llamas?</label>
+                <input type="text" name="cajanombre" id="cajanombre" placeholder="Tu nombre aquí..." required>
+            </div>
+            <button type="submit">Enviar saludo</button>
+        </form>
+
+        {% if nombre %}
+        <div class="welcome-msg">
+            <h2>¡Es un placer verte por aquí!</h2>
+            <span class="name-highlight">{{ nombre }}</span>
+        </div>
+        {% endif %}
+    </div>
+
 </body>
 </html>

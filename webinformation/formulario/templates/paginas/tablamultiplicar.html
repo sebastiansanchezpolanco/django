@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Multiplicar</title>
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #2c3e50;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+        }
+
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 40px; 
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 { color: var(--secondary-color); margin-bottom: 10px; }
+
+        .btn-back {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 20px;
+            transition: color 0.3s;
+        }
+
+        .btn-back:hover { color: #2271b1; }
+
+        /* Contenedor del Formulario */
+        form {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="number"]:focus { border-color: var(--primary-color); }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        button:hover {
+            background-color: #357abd;
+            transform: translateY(-2px);
+        }
+
+        /* Estilos de la Tabla */
+        table { 
+            width: 100%;
+            max-width: 500px;
+            border-collapse: separate;
+            border-spacing: 0;
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden; /* Para que los bordes redondeados funcionen */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        th, td { padding: 15px; text-align: center; border-bottom: 1px solid #eee; }
+
+        th { 
+            background-color: var(--secondary-color); 
+            color: white; 
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tr:nth-child(even) { background-color: #fcfcfc; }
+        
+        tr:hover { background-color: #f1f7ff; } /* Efecto hover en filas */
+
+        .resultado-destacado {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>¡Tabla de multiplicar!</h1>
+    <a href="/" class="btn-back">← Volver al inicio</a>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="cajanum">Número:</label>
+        <input type="number" name="cajanum" id="cajanum" placeholder="Ej: 7" required/>
+        <button type="submit">Generar Tabla</button>
+    </form>
+
+    {% if datostabla %}
+    <h2>Resultados para el {{ suma }}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Operación</th>
+                <th>Resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dato in datostabla %}
+            <tr>
+                <td>{{ dato.operacion }}</td>
+                <td class="resultado-destacado">{{ dato.resultado }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+</body>
+</html>

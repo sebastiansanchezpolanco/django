@@ -1,28 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Panel de Control - Django Apps</title>
+    <style>
+        :root {
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --primary-text: #2d3436;
+            --accent-color: #0984e3;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: var(--primary-text);
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        /* Contenedor de la cuadrícula */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        /* Estilo de cada tarjeta */
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--primary-text);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid transparent;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+            border-color: var(--accent-color);
+        }
+
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .menu-card span {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .description {
+            font-size: 0.85rem;
+            color: #636e72;
+            margin-top: 8px;
+        }
+
+        /* Decoración extra para los links */
+        ul { list-style: none; padding: 0; margin: 0; }
+    </style>
 </head>
 <body>
-    <h1>Menú de formularios</h1>
-    <ul>
-        <li>
-            <a href="/ejemplo">Ir a el ejemplo</a>
-        </li>
-        <li>
-            <a href="/saludos">Ir a saludos</a>
-        </li>
-        <li>
-            <a href="/suma">Ir a suma</a>
-        </li>
-        <li>
-            <a href="/parimpar">Ir a par o impar</a>
-        </li>
-        <li>
-            <a href="/collatz">Ir a Collatz</a>
-        </li>
-    </ul>
+
+    <h1>🚀 Mis Aplicaciones</h1>
+
+    <div class="menu-grid">
+        <a href="/ejemplo" class="menu-card">
+            <div class="icon">📝</div>
+            <span>Registro General</span>
+            <div class="description">Formulario de datos personales</div>
+        </a>
+
+        <a href="/saludos" class="menu-card">
+            <div class="icon">👋</div>
+            <span>Sistema de Saludos</span>
+            <div class="description">Personaliza tu bienvenida</div>
+        </a>
+
+        <a href="/suma" class="menu-card">
+            <div class="icon">➕</div>
+            <span>Calculadora Suma</span>
+            <div class="description">Suma dos números al instante</div>
+        </a>
+
+        <a href="/parimpar" class="menu-card">
+            <div class="icon">⚖️</div>
+            <span>Par o Impar</span>
+            <div class="description">Verifica la paridad numérica</div>
+        </a>
+
+        <a href="/collatz" class="menu-card">
+            <div class="icon">🌀</div>
+            <span>Conjetura Collatz</span>
+            <div class="description">Visualiza la secuencia numérica</div>
+        </a>
+
+        <a href="/tablamultiplicar" class="menu-card">
+            <div class="icon">✖️</div>
+            <span>Tablas de Multiplicar</span>
+            <div class="description">Genera tablas automáticamente</div>
+        </a>
+    </div>
+
 </body>
 </html>

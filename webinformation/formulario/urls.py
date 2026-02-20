@@ -7,5 +7,6 @@ urlpatterns =[
     path('saludos/', views.saludo, name="saludo"),
     path('suma/', views.suma, name="suma"),
     path('parimpar/', views.parimpar, name="parimpar"),
-    path('collatz/', views.collatz, name="collatz")
+    path('collatz/', views.collatz, name="collatz"),
+    path('tablamultiplicar/', views.tablamultiplicar, name="tablamultiplicar"),
 ]

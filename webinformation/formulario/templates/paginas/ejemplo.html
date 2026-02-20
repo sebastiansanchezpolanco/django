@@ -1,30 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registro de Datos</title>
+    <style>
+        :root {
+            --primary-color: #0984e3;
+            --bg-gradient: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        body { 
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg-gradient);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .form-card {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: #636e72;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        h1 { 
+            color: #2d3436; 
+            margin: 0 0 30px 0;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        /* Estructura del Formulario */
+        .form-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            font-weight: 600;
+            color: #2d3436;
+            font-size: 0.9rem;
+        }
+
+        input, select {
+            padding: 12px 16px;
+            border: 2px solid #edf2f7;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            outline: none;
+            background-color: #f8fafc;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--primary-color);
+            background-color: white;
+            box-shadow: 0 0 0 4px rgba(9, 132, 227, 0.1);
+        }
+
+        button {
+            margin-top: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        button:hover {
+            background-color: #0773c5;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-    <h1>Ejemplo</h1><br>
-    <a href="/">Volver a index</a>
-    <form>
-        Nombre: <input type="text" name="caja"/>
-        <br>
-        Numero: <input type="number" name="cajanumero"/>
-        <br>
-        Fecha: <input type="date" name="cajafecha"/>
-        <br>
-        Selecciona: 
-        <select name="colores">
-            <option value="blue">Azul</option>
-            <option value="green">Verde</option>
-            <option value="yellow">Amarillo</option>
-        </select>
-        <br>
-        <button>Get data</button>
-        <br>
-    </form>
+
+    <div class="form-card">
+        <a href="/" class="back-link">← Volver al inicio</a>
+        <h1>Configuración</h1>
+        
+        <form method="get">
+            <div class="form-grid">
+                <div class="field">
+                    <label>Nombre completo</label>
+                    <input type="text" name="caja" placeholder="Ej: Juan Pérez" required>
+                </div>
+
+                <div class="field">
+                    <label>Número de identificación</label>
+                    <input type="number" name="cajanumero" placeholder="0000">
+                </div>
+
+                <div class="field">
+                    <label>Fecha de nacimiento</label>
+                    <input type="date" name="cajafecha">
+                </div>
+
+                <div class="field">
+                    <label>Color de tema preferido</label>
+                    <select name="colores">
+                        <option value="blue">Azul Océano</option>
+                        <option value="green">Verde Bosque</option>
+                        <option value="yellow">Amarillo Sol</option>
+                    </select>
+                </div>
+
+                <button type="submit">Guardar Cambios</button>
+            </div>
+        </form>
+    </div>
 
 </body>
 </html>

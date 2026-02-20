@@ -60,5 +60,26 @@ def collatz(request):
         return render(request, "paginas/collatz.html", informacion)
     else:
         return render(request, "paginas/collatz.html")
+def tablamultiplicar(request):
+    if ('cajanum' in request.POST):
+        datostabla = [
+        ]
+        # datostabla.append(            {
+        #         "operacion": "5 * 3",
+        #         "resultado": 15
+        # })
+        valornumero = request.POST['cajanum']
+        contador=0
+        for contador in range (1, 11):
+             datostabla.append({
+                "operacion": f"{valornumero} * {contador}",
+                "resultado": int(valornumero)*int(contador)
+             })
+        informacion={
+            "datostabla":datostabla
+        }
+        return render(request, "paginas/tablamultiplicar.html", informacion)
+    else: 
+        return render(request, "paginas/tablamultiplicar.html")
     
     
