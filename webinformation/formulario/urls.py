@@ -9,4 +9,6 @@ urlpatterns =[
     path('parimpar/', views.parimpar, name="parimpar"),
     path('collatz/', views.collatz, name="collatz"),
     path('tablamultiplicar/', views.tablamultiplicar, name="tablamultiplicar"),
+    path('deportes/', views.deportes, name="deportes"),
+    path('colores/', views.colores, name="colores"),
 ]

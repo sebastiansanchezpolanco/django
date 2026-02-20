@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Principal - Mis Aplicaciones</title>
+    <style>
+        :root {
+            --primary-color: #0984e3;
+            --bg-color: #f1f2f6;
+            --card-bg: #ffffff;
+            --text-color: #2d3436;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            color: var(--text-color);
+            margin-bottom: 30px;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        /* Contenedor del Menú */
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* Estilo de los botones del menú */
+        .menu-item {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            border-color: var(--primary-color);
+            background-color: #f8fbff;
+        }
+
+        .icon {
+            font-size: 1.5rem;
+            background: #e1f0ff;
+            padding: 10px;
+            border-radius: 10px;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .label {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Botón especial para volver al Home */
+        .home-btn {
+            grid-column: 1 / -1;
+            background-color: var(--text-color);
+            color: white;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .home-btn:hover {
+            background-color: #000;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>🚀 Panel de Herramientas</h1>
+
+    <div class="menu-container">
+        <a href="/" class="menu-item home-btn">
+            <span class="icon">🏠</span>
+            <span class="label">Volver al Inicio</span>
+        </a>
+
+        <a href="/ejemplo" class="menu-item">
+            <span class="icon">📋</span>
+            <span class="label">Registro de Datos</span>
+        </a>
+
+        <a href="/saludo" class="menu-item">
+            <span class="icon">👋</span>
+            <span class="label">Sistema de Saludo</span>
+        </a>
+
+        <a href="/suma" class="menu-item">
+            <span class="icon">➕</span>
+            <span class="label">Calculadora de Suma</span>
+        </a>
+
+        <a href="/parimpar" class="menu-item">
+            <span class="icon">⚖️</span>
+            <span class="label">Verificador Par/Impar</span>
+        </a>
+
+        <a href="/collatz" class="menu-item">
+            <span class="icon">🌀</span>
+            <span class="label">Conjetura de Collatz</span>
+        </a>
+
+        <a href="/tablamultiplicar" class="menu-item">
+            <span class="icon">✖️</span>
+            <span class="label">Tablas de Multiplicar</span>
+        </a>
+    </div>
+
+</body>
+</html>

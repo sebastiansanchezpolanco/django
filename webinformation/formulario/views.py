@@ -81,5 +81,39 @@ def tablamultiplicar(request):
         return render(request, "paginas/tablamultiplicar.html", informacion)
     else: 
         return render(request, "paginas/tablamultiplicar.html")
+def deportes(request):
+    listadeportes=["Pelota Mano", "Petanca", "Chapa", "Lucha Leonesa", "Traineras", "Castells", "Corta de Troncos", "Calva", "Bolos Asturianos", "Salto del Pastor"]
+    if ('selectdeporte' in request.POST):
+        dato=request.POST['selectdeporte']
+        informacion = {
+            "listadeportes": listadeportes,
+            "deporte": dato
+        }
+        return render(request, "paginas/deportes.html", informacion)
+    else:
+        informacion={
+            "listadeportes":listadeportes
+        }
+        return render(request, "paginas/deportes.html", informacion)
+def colores(request):
+    
+    colores_dict = [
+    {"color": "Verde", "refcolor": "green"},
+    {"color": "Rojo", "refcolor": "red"},
+    {"color": "Amarillo", "refcolor": "yellow"},
+    {"color": "Azul", "refcolor": "blue"}
+]
+    if ('selectcolor' in request.POST):
+        color=request.POST['selectcolor']
+        informacion = {
+            "listacolores": colores_dict,
+            "color": color 
+        }
+        return render(request, "paginas/colores.html", informacion)
+    else:
+        informacion={
+            "listacolor":colores_dict
+        }
+        return render(request, "paginas/colores.html", informacion)
     
     

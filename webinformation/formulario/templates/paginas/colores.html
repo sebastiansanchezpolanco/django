@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector de colors</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background-color: #f4f4f9; text-align: center; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: inline-block; }
+        select { padding: 10px; border-radius: 5px; border: 1px solid #ccc; margin: 10px; }
+        button { padding: 10px 20px; background-color: #27ae60; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .resultado { margin-top: 20px; padding: 15px; background-color: #e1f5fe; border-radius: 10px; color: {{ seleccionado }};; }
+    </style>
+</head>
+<body>
+    {% include 'paginas/menu.html' %}
+
+    <div class="card">
+        <h1>🌈 COLORES</h1>
+        
+        <form method="post">
+            {% csrf_token %}
+            <label>Selecciona un color:</label>
+            <select name="selectcolor">
+                {% for color in colores_dict %}
+                <option value="{{ color.nombre }}">
+                    {{ <color class="colres"></color> }}
+                </option>
+                {% endfor %}
+            </select>
+            <button type="submit">Mostrar selección</button>
+        </form>
+
+        {% if color %}
+        <div class="resultado">
+            <h2>Su color favorito es: <strong>{{ color }}</strong></h2>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
