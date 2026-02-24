@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/insertdept">Create new</a><br/>
+    <a href="/updatedept">Update departamento</a><br/>
+    <a href="/buscarform">Buscar departamento</a><br/>
+    <a href="/buscarget?dato=10">Buscar departamento 10</a>
+    <br/>
+    <a href="/buscarget?dato=20">Buscar departamento 20</a>
+    <h1 style="color:blue">Lista de departamentos</h1>
+    <table border="1">
+        {% for d in departamentos %}
+            <tr>
+                <td> {{d.id}} </td>
+                <td> {{ d.nombre }} </td>
+                <td> {{ d.localidad }} </td>
+                <td>
+                    <a href="/buscarget?dato={{d.id}}">Detalles</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
