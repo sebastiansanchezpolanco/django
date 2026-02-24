@@ -26,7 +26,15 @@ def insertarDepartamento(request):
         informacion = {
             "departamentos": lista
         }
-        return render (request, "departamentos.html", informacion)        
+        return render (request, "departamentos.html", informacion)      
+    elif ('dato' in request.GET):
+        service=md.ServiceDepartamentos()
+        id=int(request.GET["dato"])
+        dept=service.buscarDepartamento(id)
+        informacion={
+            "departamento":dept
+        }
+        return render(request, "insertardepartamento.html", informacion)  
     else:
         return render(request, "insertardepartamento.html")
 
@@ -42,6 +50,15 @@ def updateDepartamento(request):
             "departamentos": lista
         }
         return render (request, "departamentos.html", informacion)
+    elif ('dato' in request.GET):
+        service=md.ServiceDepartamentos()
+        id=int(request.GET["dato"])
+        #buscamos el departamento
+        dept=service.buscarDepartamento(id)
+        informacion={
+            "departamento":dept
+        }
+        return render(request, "updatedepartamento.html", informacion)
     else:
         return render(request, "updatedepartamento.html")
 
@@ -68,3 +85,26 @@ def buscarDepartamentoGet(request):
         return render (request, "buscarget.html", informacion)
     else:
         return render (request, "buscarget.html")
+def delete(request):
+    if ('dato' in request.GET):
+        service=md.ServiceDepartamentos()
+        id=int(request.GET["dato"])
+        service.deleteDepartamento(id)
+        departamentos=service.getDepartamentos()
+        informacion={
+            "departamentos":departamentos
+        }
+    return render (request, "departamentos.html", informacion)
+def empleadosDepartamentos(request):
+    service=md.ServiceDepartamentos()
+    departamentos=service.getDepartamentos()
+    if('cajaiddept' in request.POST):
+        iddept=int(request.POST["cajaiddept"])
+        empleados=service.buscarEmpleadosDepartamento(iddept)
+        informacion={
+            "empleados":empleados, "departamentos":departamentos
+        }
+        return render(request, "empdept.html", informacion)
+    else:
+        informacion={"departamentos":departamentos}
+        return render(request, "empdept.html", informacion)

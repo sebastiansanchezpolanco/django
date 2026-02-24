@@ -8,6 +8,13 @@ class Departamento:
         self.nombre = ""
         self.localidad = ""
 
+class Empleado:
+    def __init__(self):
+        self.idEmpleado=0
+        self.apellido=""
+        self.oficio=""
+        self.salario=0
+
 class ServiceDepartamentos:
     def __init__(self):
         self.connection = oracledb.connect(user="system", password="oracle"
@@ -53,3 +60,25 @@ class ServiceDepartamentos:
         dept.localidad = row[2]
         cursor.close()
         return dept
+    
+    def deleteDepartamento(self, id):
+        sql = "delete from DEPT where DEPT_NO=:id"
+        cursor=self.connection.cursor()
+        cursor.execute(sql, (id, ))
+        self.connection.commit()
+        cursor.close()
+
+    def buscarEmpleadosDepartamento(self, iddept):
+        sql="select EMP_NO, APELLIDO, OFICIO, SALARIO from EMP where DEPT_NO=:iddept"
+        cursor=self.connection.cursor()
+        cursor.execute(sql, (iddept, ))
+        listaEmpleados=[]
+        for row in cursor:
+            emp=Empleado()
+            emp.idEmpleado=row[0]
+            emp.apellido=row[1]
+            emp.oficio=row[2]
+            emp.salario=row[3]
+            listaEmpleados.append(emp)
+        cursor.close
+        return listaEmpleados          

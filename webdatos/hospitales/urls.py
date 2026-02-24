@@ -8,4 +8,6 @@ urlpatterns = [
     path("updatedept/", views.updateDepartamento, name="updatedept"),
     path("buscarform/", views.buscarDepartamentoForm, name="buscarform"),
     path("buscarget/", views.buscarDepartamentoGet, name="buscarget"),
+    path("delete/", views.delete, name="delete"),
+    path("empdept/", views.empleadosDepartamentos, name="empdept"),
 ]

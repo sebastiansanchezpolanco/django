@@ -11,7 +11,7 @@
     <form method="post">
         {% csrf_token %}
         Id departamento:
-        <input type="number" name="cajaid"/><br/>
+        <input type="number" name="cajaid" value="{{departamento.id}}"/><br/>
         Nombre: 
         <input type="text" name="cajanombre"/><br/>
         Localidad: 
