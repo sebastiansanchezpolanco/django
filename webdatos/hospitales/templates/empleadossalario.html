@@ -9,7 +9,7 @@
 <h1>Empleados con salario mayor a ...</h1>
     <form method="post">
         {%csrf_token%}
-        Dame el salario
+        Dame el salario <br>
          <input type="number" name="salariodado"><br/>
         <button>Buscar empleados</button>
     </form>
@@ -19,7 +19,7 @@
                 <td>{{emp.idEmpleado}}</td>
                 <td>{{emp.apellido}}</td>
                 <td>{{emp.oficio}}</td>
-                <td>{{emp.salario}}</td>
+                <td><a href= "/empleadossalario?sal={{emp.salario}}"> {{emp.salario}}</a></td>
             </tr>
         {%endfor%}
     </table>  

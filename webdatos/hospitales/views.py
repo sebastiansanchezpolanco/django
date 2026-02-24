@@ -117,5 +117,14 @@ def empleadosSalario(request):
             "empleados":empleados
         }
         return render(request, "empleadossalario.html", informacion)
+    elif('sal' in request.GET):
+        salario=int(request.GET['sal'])
+        service=md.ServiceDepartamentos()
+        empleados=service.buscarEmpleadosSalario(salario)
+        informacion ={
+            "empleados":empleados
+        }
+        return render(request, "empleadossalario.html", informacion)
+
     else:
         return render(request, "empleadossalario.html")
