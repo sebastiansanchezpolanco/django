@@ -108,3 +108,14 @@ def empleadosDepartamentos(request):
     else:
         informacion={"departamentos":departamentos}
         return render(request, "empdept.html", informacion)
+def empleadosSalario(request):
+    if ('salariodado' in request.POST):
+        salario=int(request.POST['salariodado'])
+        service=md.ServiceDepartamentos()
+        empleados=service.buscarEmpleadosSalario(salario)
+        informacion ={
+            "empleados":empleados
+        }
+        return render(request, "empleadossalario.html", informacion)
+    else:
+        return render(request, "empleadossalario.html")

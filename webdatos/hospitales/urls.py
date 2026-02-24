@@ -10,4 +10,5 @@ urlpatterns = [
     path("buscarget/", views.buscarDepartamentoGet, name="buscarget"),
     path("delete/", views.delete, name="delete"),
     path("empdept/", views.empleadosDepartamentos, name="empdept"),
+    path("empleadossalario/", views.empleadosSalario, name="empleadossalario"),
 ]
