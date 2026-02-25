@@ -10,12 +10,16 @@
 <body>
     {% include 'menu.html' %}
     <h1>Series de televisión</h1>
-    <button>MI BOTON</button><br>
-    <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*bk2xIDUW9rwMB6248W6_4g.jpeg" width="400"><br>
-    <button type="button" class="btn btn-danger">Danger</button>
-    <button type="button" class="btn btn-warning">Warning</button>
-    <img class="rounded mx-auto d-block"
-    src="{% static 'images/36325_yoigo-tv-disney-plus.jpg' %}"  width="400"/>
+    {% for s in listaseries %}
+    <div class="card" style="width: 18rem;">
+        <img src="{{s.imagen}}" class="card-img-top" alt="...">
+        <p class="card-text"><h4>{{s.nombre}}</h4></p>
+        <a href="/personajes?idserie={{s.idSerie}}">Personajes</a>
+        </div>
+    </div>
+    
+    {% endfor %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </body>
 </html>
