@@ -4,5 +4,5 @@ urlpatterns=[
     path("", views.index, name="index"),
     path("series", views.series, name="series"),
     path("personajes", views.personajes, name="personajes"),
-    path("insertarPersonaje", views.insertarPersonaje, name="insertarPersonaje"),
+    path("insertarpersonaje", views.insertarPersonaje, name="insertarpersonaje"),
 ]
