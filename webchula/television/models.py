@@ -54,7 +54,7 @@ class ServiceSeries:
         idnuevopersonaje=int(cursor.fetchone()[0])
         sql="insert into PERSONAJES (:idnuevopersonaje, :personaje, :imagen, :idserie)"
         cursor = self.connection.cursor()
-        cursor.execute(sql, (personaje, imagen, idserie))
+        cursor.execute(sql, (idnuevopersonaje, personaje, imagen, idserie))
         self.connection.commit()
         cursor.close()  
 

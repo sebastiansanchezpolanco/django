@@ -21,9 +21,12 @@ def personajes(request):
         }
         return render(request, "personajes.html", informacion)
 def insertarPersonaje(request):
-    informacion = {}
+    service=md.ServiceSeries()
+    listaseries=service.getSeries()
+    informacion = {
+        "listaseries":listaseries
+    }
     if ('personaje' in request.POST):
-        service=md.ServiceSeries()
         personaje=request.POST["personaje"]
         imagen=request.POST["imagen"]
         idSerie=request.POST["idserie"]
@@ -31,5 +34,7 @@ def insertarPersonaje(request):
         informacion = {
             "personajes": personaje
         }
-    return render(request, "insertarPersonajes.html", informacion)
+        return render(request, "insertarpersonaje.html", informacion)
+    else:
+        return render(request, "insertarpersonaje.html", informacion)
     
